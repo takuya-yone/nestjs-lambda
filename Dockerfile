@@ -34,5 +34,6 @@ COPY --from=builder /app/dist ./dist
 # COPY package.json ./
 
 EXPOSE 3000
+ENV PORT 3000
 ENTRYPOINT ["node"]
 CMD ["dist/main.js"]
