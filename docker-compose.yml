@@ -2,7 +2,7 @@ version: '3'
 services:
   nestjs:
     build: ./
-    image: 151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-sample:1.0.0
+    image: 151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-lambda:1.0.0
     ports:
       - "3000:3000"
     hostname: api-server

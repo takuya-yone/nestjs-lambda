@@ -9,7 +9,7 @@ WORKDIR /app
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  if [ -f yarn.lock ]; then yarn; \
   elif [ -f package-lock.json ]; then npm ci; \
   elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
   else echo "Lockfile not found." && exit 1; \
@@ -24,22 +24,15 @@ COPY . .
 RUN yarn build
 
 
-FROM base AS runner
+FROM amazon/aws-lambda-nodejs:18.2023.06.16.13 AS runner
+COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.7.0 /lambda-adapter /opt/extensions/lambda-adapter
 
 WORKDIR /app
 ENV NODE_ENV=production 
-RUN apk update
-RUN apk add --no-cache curl
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
 # COPY package.json ./
 
-
+EXPOSE 3000
 ENTRYPOINT ["node"]
 CMD ["dist/main.js"]
-
-# CMD ["node", "main.js"]
-# EXPOSE 3000
-# CMD ["yarn", "start:prod"]
-# CMD ["sleep","3000"]
-
