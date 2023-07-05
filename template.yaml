@@ -79,9 +79,15 @@ Outputs:
   NestjsApi:
     Description: API Gateway endpoint URL
     Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
+    Export:
+      Name: NestjsApi
   NestjsApiAppId:
     Description: API Gateway AppId
     Value: !GetAtt ServerlessHttpApi.ApiId
-  CloudFront:
+    Export:
+      Name: NestjsApiAppId
+  NestjsCloudFront:
     Description: CloudFront Distribution URL
     Value: !Sub "https://${CloudFrontDistribution.DomainName}"
+    Export:
+      Name: NestjsCloudFront
