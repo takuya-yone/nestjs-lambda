@@ -7,12 +7,12 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
 
   const config = new DocumentBuilder().build();
+  // const config = new DocumentBuilder().addServer('aaaa').build();
   const document = SwaggerModule.createDocument(app, config, {
     ignoreGlobalPrefix: false,
   });
 
   SwaggerModule.setup('api/docs', app, document);
-  // const options = new DocumentBuilder().setBasePath('/my/deep/path').build();
 
   await app.listen(3000);
 }
