@@ -81,6 +81,11 @@ Outputs:
     Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
     Export:
       Name: NestjsApi
+  NestjsApiDomain:
+    Description: API Gateway endpoint Domain
+    Value: !Sub "${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com"
+    Export:
+      Name: NestjsApiDomain
   NestjsApiAppId:
     Description: API Gateway AppId
     Value: !GetAtt ServerlessHttpApi.ApiId
