@@ -1,8 +1,24 @@
 version: '3'
 services:
-  nestjs:
-    build: ./
-    image: 151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-lambda:1.0.0
+  # nestjs:
+  #   build: ./
+  #   image: 151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-lambda:1.0.0
+  #   ports:
+  #     - "3000:3000"
+  #   hostname: api-server
+  adminer:
+    image: adminer
+    restart: always
     ports:
-      - "3000:3000"
-    hostname: api-server
+      - 8080:8080
+    environment:
+      # ADMINER_DEFAULT_DB_HOST: mysqldb
+      ADMINER_DEFAULT_SERVER: postgres
+
+  postgres:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
