@@ -19,7 +19,16 @@ import { RecipesModule } from './recipes/recipes.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      // path: '/api/graphql',
+      playground: true,
+      // include: [UsersModule],
     }),
+    // GraphQLModule.forRoot<ApolloDriverConfig>({
+    //   driver: ApolloDriver,
+    //   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+    //   path: '/post',
+    //   include: [PostsModule],
+    // }),
     RecipesModule,
   ],
   controllers: [],

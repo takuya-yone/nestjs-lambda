@@ -23,8 +23,8 @@ type Recipe {
 }
 
 type Query {
-  user(id: Int!): User!
-  users: [User!]!
+  user(id: Int!): User
+  users: [User!]
   posts: [Post!]!
   recipes: [Recipe!]!
   recipe(id: Int!): Recipe!

@@ -16,19 +16,19 @@ import { Post } from 'src/posts/entities/post.entity';
 export class UsersResolver {
   constructor(private prisma: PrismaService) {}
 
-  @Query(() => User)
+  @Query(() => User, { nullable: true })
   async user(@Args('id', { type: () => Int }) id: number) {
     return this.prisma.user.findUnique({
       where: { id: id },
     });
   }
 
-  @Query(() => [User])
+  @Query(() => [User], { nullable: true })
   async users() {
     return this.prisma.user.findMany();
   }
 
-  @ResolveField(() => [Post])
+  @ResolveField(() => [Post], { nullable: true })
   async posts(@Parent() user: User) {
     return await this.prisma.post.findMany({
       where: { userId: user.id },
