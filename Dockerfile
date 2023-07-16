@@ -21,6 +21,7 @@ FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+RUN yarn prisma generate
 RUN yarn build
 
 
@@ -30,10 +31,13 @@ COPY --from=public.ecr.aws/awsguru/aws-lambda-adapter:0.7.0 /lambda-adapter /opt
 WORKDIR /app
 ENV NODE_ENV=production 
 COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/schema.gql ./schema.gql
 COPY --from=builder /app/dist ./dist
 # COPY package.json ./
 
 EXPOSE 3000
 ENV PORT 3000
+# ENTRYPOINT ["ls"]
 ENTRYPOINT ["node"]
-CMD ["dist/main.js"]
+CMD ["dist/src/main.js"]

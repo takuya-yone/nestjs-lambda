@@ -13,12 +13,12 @@ export class PrismaProvider
 {
   async onModuleInit() {
     console.log('onModuleInit');
-    await this.$connect();
+    // await this.$connect();
   }
 
   async beforeApplicationShutdown() {
     console.log('beforeApplicationShutdown');
-    await this.$disconnect();
+    // await this.$disconnect();
   }
 
   //   async enableShutdownHooks(app: INestApplication) {
