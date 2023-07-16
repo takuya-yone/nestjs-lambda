@@ -7,14 +7,14 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { PrismaService } from '../prisma/prisma.service';
+import { PrismaProvider } from '../prisma/prisma.provider';
 
 import { User } from './entities/user.entity';
 import { Post } from 'src/posts/entities/post.entity';
 
 @Resolver(() => User)
 export class UsersResolver {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaProvider) {}
 
   @Query(() => User, { nullable: true })
   async user(@Args('id', { type: () => Int }) id: number) {

@@ -1,11 +1,11 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { PrismaService } from '../prisma/prisma.service';
+import { PrismaProvider } from '../prisma/prisma.provider';
 
 import { Post } from './entities/post.entity';
 
 @Resolver(() => Post)
 export class PostsResolver {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaProvider) {}
   @Query(() => [Post])
   async posts() {
     return this.prisma.post.findMany();
