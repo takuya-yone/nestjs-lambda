@@ -16,13 +16,13 @@ import { RecipesModule } from './recipes/recipes.module';
     MembersModule,
     UsersModule,
     PostsModule,
-    // GraphQLModule.forRoot<ApolloDriverConfig>({
-    //   driver: ApolloDriver,
-    //   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-    //   // path: '/api/graphql',
-    //   playground: true,
-    //   // include: [UsersModule],
-    // }),
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      // path: '/api/graphql',
+      playground: true,
+      // include: [UsersModule],
+    }),
     // GraphQLModule.forRoot<ApolloDriverConfig>({
     //   driver: ApolloDriver,
     //   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),

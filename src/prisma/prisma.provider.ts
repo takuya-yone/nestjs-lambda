@@ -12,13 +12,13 @@ export class PrismaProvider
   implements OnModuleInit, BeforeApplicationShutdown
 {
   async onModuleInit() {
-    console.log('onModuleInit');
-    // await this.$connect();
+    // console.log('onModuleInit');
+    await this.$connect();
   }
 
   async beforeApplicationShutdown() {
-    console.log('beforeApplicationShutdown');
-    // await this.$disconnect();
+    // console.log('beforeApplicationShutdown');
+    await this.$disconnect();
   }
 
   //   async enableShutdownHooks(app: INestApplication) {
