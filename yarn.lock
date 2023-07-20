@@ -962,10 +962,10 @@
     lodash.omit "4.5.0"
     tslib "2.6.0"
 
-"@nestjs/cli@^10.1.9":
-  version "10.1.9"
-  resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-10.1.9.tgz#97d37103962571ee28ef0d00ab080c86bc4dda7a"
-  integrity sha512-kD+QZUPZ5T9dCfp5pjYXQ+tulLiszARQiXuTi56ZvsKg0MVW3jrF90zfMD5thU5XyfmUYFCpB1kpCMXiOYhLcg==
+"@nestjs/cli@^10.1.10":
+  version "10.1.10"
+  resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-10.1.10.tgz#ae4cdc26e9e02602f653237a4e68d94f764c0722"
+  integrity sha512-5adPl6m2X0uOrK4IPUbzBJUqZ//UKsKi9c7yAR3uCu+moSDMieG/YeKt+zGLnF2gaCdHdgeWWoxI0nfMVE5uCA==
   dependencies:
     "@angular-devkit/core" "16.1.4"
     "@angular-devkit/schematics" "16.1.4"
@@ -1058,10 +1058,10 @@
     jsonc-parser "3.2.0"
     pluralize "8.0.0"
 
-"@nestjs/swagger@^7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-7.1.1.tgz#67285035a58a32059f219532b449addf81f8e513"
-  integrity sha512-gIG1aVCegZlIppXZizKHqWkqZvQkvptTBR1C5CzZoDwGoVVKJBmJ2i9FAcsnzzb0j7hncFKhcBuWYOBJOsCvug==
+"@nestjs/swagger@^7.1.2":
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-7.1.2.tgz#09eed4483521e0a9b87a14eab35547253dcdbc28"
+  integrity sha512-/eWlV3YuMpvEAGi3FcP0SbRGI+gqIJ93mxXaRc/GRKAOHLj5UzQ22jsUVqmSLmNMCSmp6PTLNcRGoLW++SExJA==
   dependencies:
     "@nestjs/mapped-types" "2.0.2"
     js-yaml "4.1.0"
