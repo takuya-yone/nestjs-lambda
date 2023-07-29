@@ -6,9 +6,25 @@ services:
   #   ports:
   #     - "3000:3000"
   #   hostname: api-server
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    tty: true
+    stdin_open: true
+    ports:
+      - "18080:8080" # 8080は被りやすいので別のポートに設定
+    # volumes:
+    #   - ./data/keycloak:/opt/keycloak/data # DB情報等が格納されます
+    environment:
+      KEYCLOAK_ADMIN: admin # 管理ユーザーIDを設定
+      KEYCLOAK_ADMIN_PASSWORD: admin # 管理ユーザーのパスワードを設定
+    command:
+      - start-dev # 開発モードで起動
+
   adminer:
     image: adminer
     restart: always
+    container_name: adminer
     ports:
       - 8080:8080
     environment:
@@ -17,6 +33,7 @@ services:
 
   postgres:
     image: postgres:15
+    container_name: postgres
     ports:
       - "5432:5432"
     environment:
