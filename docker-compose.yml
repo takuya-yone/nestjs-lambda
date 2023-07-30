@@ -1,41 +1,44 @@
 version: '3'
 services:
-  # nestjs:
-  #   build: ./
-  #   image: 151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-lambda:1.0.0
-  #   ports:
-  #     - "3000:3000"
-  #   hostname: api-server
-  keycloak:
-    image: quay.io/keycloak/keycloak:latest
-    container_name: keycloak
-    tty: true
-    stdin_open: true
+  nestjs:
+    build: ./
+    image: 151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-docker:1.0.2
+    container_name: nestjs
     ports:
-      - "18080:8080" # 8080は被りやすいので別のポートに設定
-    # volumes:
-    #   - ./data/keycloak:/opt/keycloak/data # DB情報等が格納されます
-    environment:
-      KEYCLOAK_ADMIN: admin # 管理ユーザーIDを設定
-      KEYCLOAK_ADMIN_PASSWORD: admin # 管理ユーザーのパスワードを設定
-    command:
-      - start-dev # 開発モードで起動
+      - "3000:3000"
+    hostname: nestjs
+  # keycloak:
+  #   image: quay.io/keycloak/keycloak:latest
+  #   container_name: keycloak
+  #   tty: true
+  #   stdin_open: true
+  #   ports:
+  #     - "18080:8080" # 8080は被りやすいので別のポートに設定
+  #   # volumes:
+  #   #   - ./data/keycloak:/opt/keycloak/data # DB情報等が格納されます
+  #   environment:
+  #     KEYCLOAK_ADMIN: admin # 管理ユーザーIDを設定
+  #     KEYCLOAK_ADMIN_PASSWORD: admin # 管理ユーザーのパスワードを設定
+  #   command:
+  #     - start-dev # 開発モードで起動
 
   adminer:
     image: adminer
     restart: always
     container_name: adminer
+    hostname: adminer
     ports:
       - 8080:8080
     environment:
       # ADMINER_DEFAULT_DB_HOST: mysqldb
       ADMINER_DEFAULT_SERVER: postgres
 
-  postgres:
-    image: postgres:15
-    container_name: postgres
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+  # postgres:
+  #   image: postgres:15
+  #   container_name: postgres
+  #   hostname: postgres
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
