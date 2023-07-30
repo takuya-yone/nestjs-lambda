@@ -8,7 +8,8 @@ import { LoggerMiddleware } from './middleware/logger/logger.middleware';
 import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { join } from 'path';
-import { RecipesModule } from './recipes/recipes.module';
+import { AuthModule } from './auth/auth.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { RecipesModule } from './recipes/recipes.module';
       playground: true,
       // include: [UsersModule],
     }),
+    AuthModule,
     // GraphQLModule.forRoot<ApolloDriverConfig>({
     //   driver: ApolloDriver,
     //   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
@@ -30,7 +32,7 @@ import { RecipesModule } from './recipes/recipes.module';
     //   include: [PostsModule],
     // }),
   ],
-  controllers: [],
+  controllers: [AppController],
   providers: [],
 })
 export class AppModule {
