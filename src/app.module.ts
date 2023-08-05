@@ -28,23 +28,9 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       // include: [UsersModule],
     }),
     AuthModule,
-
-    ThrottlerModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        ttl: config.get('THROTTLE_TTL'),
-        limit: config.get('THROTTLE_LIMIT'),
-      }),
-    }),
   ],
   controllers: [AppController],
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: ThrottlerGuard,
-    },
-  ],
+  providers: [],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {

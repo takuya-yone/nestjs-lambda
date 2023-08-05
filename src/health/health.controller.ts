@@ -13,7 +13,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 export class HealthController {
   constructor(private readonly healthService: HealthService) {}
   @Get()
-  // @UseGuards(ThrottlerGuard)
+  @UseGuards(ThrottlerGuard)
   getHealth(@Req() request: Request): string {
     return this.healthService.getHealth(request);
   }
