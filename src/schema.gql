@@ -4,6 +4,7 @@
 
 type Post {
   id: ID!
+  uuid: ID!
   user: User!
   userId: ID!
   title: String!
@@ -13,6 +14,7 @@ type Post {
 
 type User {
   id: ID!
+  uuid: ID!
   posts: [Post!]!
   email: String!
   name: String!

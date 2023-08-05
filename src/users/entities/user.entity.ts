@@ -5,6 +5,8 @@ import { Post } from 'src/posts/entities/post.entity';
 export class User {
   @Field(() => ID)
   id: number;
+  @Field(() => ID)
+  uuid: string;
   email: string;
   name: string;
   @Field(() => [Post])

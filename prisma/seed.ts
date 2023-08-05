@@ -2,6 +2,7 @@ interface PostRecord {
   title: string;
   content: string;
   published: boolean;
+  uuid: string;
 }
 
 import {
@@ -14,6 +15,7 @@ import {
   randUrl,
   randBoolean,
 } from '@ngneat/falso';
+import { v4 as uuidv4 } from 'uuid';
 
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
@@ -31,6 +33,7 @@ async function main() {
         title: randMovie(),
         content: randUrl(),
         published: randBoolean(),
+        uuid: uuidv4(),
       };
       posts.push(tmp);
     }
@@ -41,6 +44,7 @@ async function main() {
       create: {
         email: email,
         name: user,
+        uuid: uuidv4(),
         posts: {
           create: posts,
         },

@@ -5,6 +5,8 @@ import { User } from 'src/users/entities/user.entity';
 export class Post {
   @Field(() => ID)
   id: number;
+  @Field(() => ID)
+  uuid: string;
   title: string;
   content: string;
   published: boolean;
