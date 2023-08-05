@@ -22,9 +22,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     PostsModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      autoSchemaFile: join(process.cwd(), 'schema.gql'),
       // path: '/api/graphql',
       playground: true,
+      introspection: true,
       // include: [UsersModule],
     }),
     AuthModule,
