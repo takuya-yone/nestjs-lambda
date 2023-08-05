@@ -1,6 +1,7 @@
 import { Module, MiddlewareConsumer, RequestMethod } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { APP_GUARD } from '@nestjs/core';
 
 import { HealthModule } from './health/health.module';
 import { MembersModule } from './members/members.module';
@@ -10,6 +11,8 @@ import { PostsModule } from './posts/posts.module';
 import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -25,15 +28,23 @@ import { AppController } from './app.controller';
       // include: [UsersModule],
     }),
     AuthModule,
-    // GraphQLModule.forRoot<ApolloDriverConfig>({
-    //   driver: ApolloDriver,
-    //   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-    //   path: '/post',
-    //   include: [PostsModule],
-    // }),
+
+    ThrottlerModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => ({
+        ttl: config.get('THROTTLE_TTL'),
+        limit: config.get('THROTTLE_LIMIT'),
+      }),
+    }),
   ],
   controllers: [AppController],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {

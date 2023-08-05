@@ -1,0 +1,11 @@
+execution:
+- concurrency: 1
+  throughput: 1
+  ramp-up: 0s
+  hold-for: 20s
+  scenario: rate_check
+
+scenarios:
+  rate_check:
+    requests:
+    - http://localhost:3000/api/health
