@@ -1,12 +1,12 @@
 version: '3'
 services:
-  # nestjs:
-  #   build: ./
-  #   image: 151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-docker:1.0.2
-  #   container_name: nestjs
-  #   ports:
-  #     - "3000:3000"
-  #   hostname: nestjs
+  nestjs:
+    build: ./
+    image: 151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-docker:1.0.4
+    container_name: nestjs
+    ports:
+      - "3000:3000"
+    hostname: nestjs
   # keycloak:
   #   image: quay.io/keycloak/keycloak:latest
   #   container_name: keycloak
