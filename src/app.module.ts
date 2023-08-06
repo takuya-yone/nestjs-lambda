@@ -13,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ComplexityPlugin } from './plugins/apollo-complexity-plugin';
 
 @Module({
   imports: [
@@ -31,7 +32,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     AuthModule,
   ],
   controllers: [AppController],
-  providers: [],
+  providers: [ComplexityPlugin],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
