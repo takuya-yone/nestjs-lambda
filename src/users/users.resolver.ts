@@ -19,14 +19,14 @@ export class UsersResolver {
   constructor(private prisma: PrismaProvider) {}
 
   @Query(() => User, { nullable: true })
-  async user(@Args('id', { type: () => Int }) id: number) {
+  async getUser(@Args('id', { type: () => Int }) id: number) {
     return this.prisma.user.findUnique({
       where: { id: id },
     });
   }
 
   @Query(() => [User], { nullable: true })
-  async users() {
+  async getUsers() {
     return this.prisma.user.findMany();
   }
 

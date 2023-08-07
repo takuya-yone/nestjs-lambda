@@ -16,11 +16,11 @@ import { User } from '../users/entities/user.entity';
 export class PostsResolver {
   constructor(private prisma: PrismaProvider) {}
   @Query(() => [Post])
-  async posts() {
+  async getPosts() {
     return this.prisma.post.findMany();
   }
   @Query(() => Post, { nullable: true })
-  async post(@Args('id', { type: () => Int }) id: number) {
+  async getPost(@Args('id', { type: () => Int }) id: number) {
     return this.prisma.post.findUnique({
       where: { id: id },
     });

@@ -21,10 +21,10 @@ type User {
 }
 
 type Query {
-  user(id: Int!): User
-  users: [User!]
-  posts: [Post!]!
-  post(id: Int!): Post
+  getUser(id: Int!): User
+  getUsers: [User!]
+  getPosts: [Post!]!
+  getPost(id: Int!): Post
 }
 
 type Mutation {
