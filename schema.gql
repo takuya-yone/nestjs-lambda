@@ -26,3 +26,7 @@ type Query {
   posts: [Post!]!
   post(id: Int!): Post
 }
+
+type Mutation {
+  createUser(name: String!, email: String!): User!
+}

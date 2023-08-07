@@ -7,6 +7,8 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
+import { v4 as uuidv4 } from 'uuid';
+
 import { PrismaProvider } from '../prisma/prisma.provider';
 
 import { User } from './entities/user.entity';
@@ -26,6 +28,17 @@ export class UsersResolver {
   @Query(() => [User], { nullable: true })
   async users() {
     return this.prisma.user.findMany();
+  }
+
+  @Mutation((returns) => User)
+  async createUser(@Args('name') name: string, @Args('email') email: string) {
+    return this.prisma.user.create({
+      data: {
+        email: email,
+        name: name,
+        uuid: uuidv4(),
+      },
+    });
   }
 
   @ResolveField(() => [Post], { nullable: true })
