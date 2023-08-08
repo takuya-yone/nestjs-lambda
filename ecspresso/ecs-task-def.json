@@ -1,0 +1,59 @@
+{
+  "containerDefinitions": [
+    {
+      "cpu": 0,
+      "environment": [
+        {
+          "name": "DATABASE_URL",
+          "value": "postgresql://postgres:postgres@10.0.1.59:5432/sampledb?schema=public"
+        }
+      ],
+      "essential": true,
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "curl -f http://localhost:3000/api/health || exit 1"
+        ],
+        "interval": 10,
+        "retries": 5,
+        "startPeriod": 10,
+        "timeout": 10
+      },
+      "image": "151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-docker:1.0.12",
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "name": "nestjs",
+      "portMappings": [
+        {
+          "appProtocol": "http",
+          "containerPort": 3000,
+          "hostPort": 3000,
+          "name": "nestjs-3000-tcp",
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "cpu": "1024",
+  "executionRoleArn": "arn:aws:iam::151268123722:role/ecsTaskExecutionRole",
+  "family": "nestjs-task",
+  "ipcMode": "",
+  "memory": "2048",
+  "networkMode": "awsvpc",
+  "pidMode": "",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "runtimePlatform": {
+    "cpuArchitecture": "ARM64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "taskRoleArn": "arn:aws:iam::151268123722:role/ecsTaskExecutionRole"
+}
