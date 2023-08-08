@@ -12,7 +12,7 @@
   },
   "desiredCount": 1,
   "enableECSManagedTags": true,
-  "enableExecuteCommand": false,
+  "enableExecuteCommand": true,
   "launchType": "FARGATE",
   "networkConfiguration": {
     "awsvpcConfiguration": {
