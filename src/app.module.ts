@@ -14,6 +14,7 @@ import { AppController } from './app.controller';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ComplexityPlugin } from './plugins/apollo-complexity-plugin';
+import { RedirectModule } from './redirect/redirect.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ComplexityPlugin } from './plugins/apollo-complexity-plugin';
       // include: [UsersModule],
     }),
     AuthModule,
+    RedirectModule,
   ],
   controllers: [AppController],
   providers: [ComplexityPlugin],
