@@ -16,11 +16,11 @@ export class RedirectController {
   constructor(private readonly redirectService: RedirectService) {}
 
   @Get()
-  @Redirect('https://nestjs.com', 301)
+  @Redirect('https://nestjs.com', HttpStatus.TEMPORARY_REDIRECT)
   getRedirect() {
     const obj: redirectObj = {
       url: 'https://docs.nestjs.com/v5/',
-      statusCode: 301,
+      statusCode: HttpStatus.TEMPORARY_REDIRECT,
     };
     // console.log(request);
     return this.redirectService.getRedirect(obj);
