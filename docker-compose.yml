@@ -1,12 +1,12 @@
 version: '3'
 services:
-  # nestjs:
-  #   build: ./
-  #   image: 151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-docker:1.0.4
-  #   container_name: nestjs
-  #   ports:
-  #     - "3000:3000"
-  #   hostname: nestjs
+  nestjs:
+    build: ./
+    image: 151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-docker:1.0.13
+    container_name: nestjs
+    ports:
+      - '3000:3000'
+    hostname: nestjs
   # keycloak:
   #   image: quay.io/keycloak/keycloak:latest
   #   container_name: keycloak
@@ -22,23 +22,23 @@ services:
   #   command:
   #     - start-dev # 開発モードで起動
 
-  adminer:
-    image: adminer
-    restart: always
-    container_name: adminer
-    hostname: adminer
-    ports:
-      - 8080:8080
-    environment:
-      # ADMINER_DEFAULT_DB_HOST: mysqldb
-      ADMINER_DEFAULT_SERVER: postgres
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   container_name: adminer
+  #   hostname: adminer
+  #   ports:
+  #     - 8080:8080
+  #   environment:
+  #     # ADMINER_DEFAULT_DB_HOST: mysqldb
+  #     ADMINER_DEFAULT_SERVER: postgres
 
-  postgres:
-    image: postgres:15
-    container_name: postgres
-    hostname: postgres
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+  # postgres:
+  #   image: postgres:15
+  #   container_name: postgres
+  #   hostname: postgres
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
