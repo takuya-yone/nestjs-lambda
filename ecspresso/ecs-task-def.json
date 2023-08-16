@@ -12,14 +12,14 @@
       "healthCheck": {
         "command": [
           "CMD-SHELL",
-          "curl -f http://localhost:3000/api/health || exit 1"
+          "curl -f http://localhost:3000/api/health/e2e || exit 1"
         ],
         "interval": 10,
         "retries": 5,
         "startPeriod": 10,
         "timeout": 10
       },
-      "image": "151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-docker:1.0.13",
+      "image": "151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-docker:1.0.14",
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
