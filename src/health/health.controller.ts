@@ -17,4 +17,9 @@ export class HealthController {
   getHealth(@Req() request: Request): string {
     return this.healthService.getHealth(request);
   }
+  @Get('e2e')
+  @UseGuards(ThrottlerGuard)
+  async getHealthE2E(@Req() request: Request): Promise<string> {
+    return this.healthService.getHealthE2E(request);
+  }
 }
