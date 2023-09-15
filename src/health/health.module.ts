@@ -10,10 +10,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     ThrottlerModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        ttl: config.get('THROTTLE_TTL'),
-        limit: config.get('THROTTLE_LIMIT'),
-      }),
+      useFactory: (config: ConfigService) => [
+        {
+          ttl: config.get('THROTTLE_TTL'),
+          limit: config.get('THROTTLE_LIMIT'),
+        },
+      ],
     }),
   ],
   controllers: [HealthController],
