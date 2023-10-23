@@ -8,9 +8,6 @@ type PostRecord = {
 import {
   randEmail,
   randFullName,
-  rand,
-  seed,
-  randSuperhero,
   randMovie,
   randUrl,
   randBoolean,

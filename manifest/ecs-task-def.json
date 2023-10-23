@@ -5,7 +5,7 @@
       "environment": [
         {
           "name": "DATABASE_URL",
-          "value": "postgresql://postgres:postgres@10.0.1.59:5432/sampledb?schema=public"
+          "value": "postgresql://postgres:postgres@10.0.1.135:5432/sampledb?schema=public"
         }
       ],
       "essential": true,
