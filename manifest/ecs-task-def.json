@@ -5,7 +5,7 @@
       "environment": [
         {
           "name": "DATABASE_URL",
-          "value": "postgresql://postgres:postgres@10.0.1.135:5432/sampledb?schema=public"
+          "value": "postgresql://postgres:postgres@10.0.0.135:5432/sampledb?schema=public"
         }
       ],
       "essential": true,
@@ -14,10 +14,10 @@
           "CMD-SHELL",
           "curl -f http://localhost:3000/api/health/e2e || exit 1"
         ],
-        "interval": 10,
-        "retries": 5,
+        "interval": 30,
+        "retries": 3,
         "startPeriod": 10,
-        "timeout": 10
+        "timeout": 5
       },
       "image": "151268123722.dkr.ecr.ap-northeast-1.amazonaws.com/nestjs-docker:1.0.15",
       "logConfiguration": {
