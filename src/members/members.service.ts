@@ -8,7 +8,8 @@ export class MembersService {
     { id: 1, name: 'suzuki', age: 28, mail: 'suzuki@gmail.com' },
     { id: 2, name: 'yamada', age: 55, mail: 'yamada@gmail.com' },
   ];
-  getMembers(request: Request): Member[] {
+  getMembers(request: Request, member: Member): Member[] {
+    console.log(member);
     return this.members;
   }
   getMember(request: Request, id: number): Member | undefined {

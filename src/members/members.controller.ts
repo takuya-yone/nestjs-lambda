@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   HttpStatus,
   UseGuards,
+  Body,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
@@ -16,10 +17,11 @@ import { Member } from './members.interface';
 @Controller('members')
 export class MembersController {
   constructor(private readonly membersService: MembersService) {}
-  @UseGuards(AuthGuard('local'))
+  // @UseGuards(AuthGuard('local'))
   @Post()
-  getMembers(@Req() request: Request): Member[] {
-    return this.membersService.getMembers(request);
+  getMembers(@Req() request: Request, @Body() member: Member): Member[] {
+    console.log(member);
+    return this.membersService.getMembers(request, member);
   }
   @Get(':id')
   getMember(
