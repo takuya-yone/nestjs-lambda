@@ -20,7 +20,6 @@ export class MembersController {
   // @UseGuards(AuthGuard('local'))
   @Post()
   getMembers(@Req() request: Request, @Body() member: Member): Member[] {
-    console.log(member);
     return this.membersService.getMembers(request, member);
   }
   @Get(':id')

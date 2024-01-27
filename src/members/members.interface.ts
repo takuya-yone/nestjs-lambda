@@ -8,7 +8,7 @@ export class Member {
   @IsString()
   name: string;
   @IsNotEmpty()
-  @IsString()
+  @IsNumber()
   age: number;
   @IsNotEmpty()
   @IsString()
